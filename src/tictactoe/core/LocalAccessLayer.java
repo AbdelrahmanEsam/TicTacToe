@@ -5,7 +5,7 @@
  */
 package tictactoe.core;
 
-import tictactoe.online_mode.domain.usecases.UpdatePlayerOverallScoreUseCase;
+import tictactoe.online_multi_player.domain.usecases.UpdatePlayerOverallScoreUseCase;
 
 public class LocalAccessLayer {
     

@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tictactoe.online_mode.domain.model;
+package tictactoe.online_multi_player.presentation;
 
 /**
  *
  * @author ASUS
  */
-public class Player {
-    //set your player attributes and functions setter and getter etc
+public enum Turn {
+    FIRSTPLAYER,
+    SECONDPLAYER
 }

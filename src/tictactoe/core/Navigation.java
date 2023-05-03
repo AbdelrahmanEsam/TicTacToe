@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import tictactoe.online_mode.presentation.OnlineViewController;
+import tictactoe.online_multi_player.presentation.OnlineViewController;
 
 
 public class Navigation {

@@ -1,7 +1,8 @@
-package tictactoe.online_mode.presentation.winner_dialog;
+package tictactoe.online_multi_player.presentation.winner_dialog;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import tictactoe.core.Navigation;
+import tictactoe.core.PassData;
 import tictactoe.core.designsystem.ColorPalette;
 import tictactoe.core.designsystem.Typography;
 import tictactoe.core.designsystem.resources.ImagesUri;
@@ -353,6 +356,10 @@ public  class WinnerDialogController extends GridPane {
         gridPane2.getChildren().add(cameraImageView);
         gridPane2.getChildren().add(text1);
         getChildren().add(watchMovesButton);
+        
+        
+        
+        winnerNameTextView.setText(PassData.getInstance().winnerName.get());
         mainMenuButton.setStyle("-fx-background-color: "+ColorPalette.lightBlue+"; -fx-background-radius: 15px;");
          replayButton.setStyle("-fx-background-color: "+ColorPalette.lightRed+"; -fx-background-radius: 15px;");
          watchMovesButton.setStyle("-fx-background-color: "+ColorPalette.lightYellow+"; -fx-background-radius: 15px;");
@@ -361,5 +368,40 @@ public  class WinnerDialogController extends GridPane {
             homeImageView.setImage(new Image(ImagesUri.home));
             retryImageView.setImage(new Image(ImagesUri.retry));
             cameraImageView.setImage(new Image(ImagesUri.camera));
+            actions();
+            
+          
+    }
+    
+    
+    private void actions()
+    {
+          mainMenuButton.setOnAction((event) -> {
+            
+              
+                 setReturnAndClose("main");
+            });
+            
+            
+             replayButton.setOnAction((event) -> {
+            
+       
+                 setReturnAndClose("replay");
+            
+            });
+             
+              watchMovesButton.setOnAction((event) -> {
+            
+              setReturnAndClose("watch moves");
+
+            });
+    }
+    
+    
+    private void setReturnAndClose(String dialogReturn)
+    {
+            PassData.getInstance().dialogReturn.set("");
+            PassData.getInstance().dialogReturn.set(dialogReturn);
+            Navigation.closePage(this);
     }
 }

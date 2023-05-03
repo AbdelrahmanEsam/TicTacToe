@@ -1,5 +1,5 @@
 
-package tictactoe.online_mode.domain.usecases;
+package tictactoe.online_multi_player.domain.usecases;
 
 public class UpdatePlayerOverallScoreUseCase {
    static UpdatePlayerOverallScoreUseCase instance ; 

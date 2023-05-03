@@ -16,7 +16,7 @@ public class TicTacToe extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = (Parent)ViewControllerFactory.getViewController(ViewController.MULTIVIEWCONTROLLER);
+        Parent root = (Parent)ViewControllerFactory.getViewController(ViewController.SINGLEVIEWCONTROLLER);
 
         
         Scene scene = new Scene(root);

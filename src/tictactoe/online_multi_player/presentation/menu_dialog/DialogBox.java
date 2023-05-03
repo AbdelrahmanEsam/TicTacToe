@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tictactoe.online_mode.presentation.menu_dialog;
+package tictactoe.online_multi_player.presentation.menu_dialog;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -142,13 +142,13 @@ public class DialogBox {
            window.show();
         
         menuButton.setOnAction((event) -> {
-              PassData.getInstance().menuDialogReturn.setValue(null);
-            PassData.getInstance().menuDialogReturn.setValue(true);
+              PassData.getInstance().dialogReturn.setValue(null);
+            PassData.getInstance().dialogReturn.setValue("main");
              ((Stage) closeDialog.getScene().getWindow()).close();
         });
          restartButton.setOnAction((event) -> {
-               PassData.getInstance().menuDialogReturn.setValue(null);
-             PassData.getInstance().menuDialogReturn.setValue(false);
+               PassData.getInstance().dialogReturn.setValue(null);
+             PassData.getInstance().dialogReturn.setValue("replay");
               ((Stage) closeDialog.getScene().getWindow()).close();
         });
          

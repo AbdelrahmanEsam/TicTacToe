@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tictactoe.multiplayer.presentation;
+package tictactoe.online_multi_player.domain.model;
 
 /**
  *
  * @author ASUS
  */
-public class MultiPlayerViewModel {
-
-    public MultiPlayerViewModel() {
-    }
-    
+public class Player {
+    //set your player attributes and functions setter and getter etc
 }

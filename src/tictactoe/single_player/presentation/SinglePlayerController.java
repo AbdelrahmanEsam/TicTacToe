@@ -1,20 +1,11 @@
-package tictactoe.online_mode.presentation;
+package tictactoe.single_player.presentation;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Separator;
 import javafx.scene.effect.Blend;
 import javafx.scene.image.Image;
@@ -23,20 +14,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import tictactoe.core.Navigation;
 import tictactoe.core.PassData;
 import tictactoe.core.ViewController;
-import tictactoe.core.designsystem.Typography;
 import tictactoe.core.designsystem.resources.ImagesUri;
-import tictactoe.online_mode.presentation.menu_dialog.DialogBox;
-import tictactoe.online_mode.presentation.menu_dialog.MenuDialogController;
+import tictactoe.online_multi_player.presentation.OnlineViewController;
 
-public  class OnlineViewController extends BorderPane {
+public  class SinglePlayerController extends BorderPane {
 
     protected final GridPane gridPane;
     protected final ColumnConstraints columnConstraints;
@@ -59,14 +46,14 @@ public  class OnlineViewController extends BorderPane {
     protected final RowConstraints rowConstraints3;
     protected final RowConstraints rowConstraints4;
     protected final RowConstraints rowConstraints5;
-    protected final Text firstPlayerName1;
+    protected final Text playerOneName;
     protected final ImageView firstPlayerSymbolImageView1;
     protected final GridPane gridPane3;
     protected final ColumnConstraints columnConstraints6;
     protected final RowConstraints rowConstraints6;
     protected final RowConstraints rowConstraints7;
     protected final RowConstraints rowConstraints8;
-    protected final Text firstPlayerName;
+    protected final Text playerTwoName;
     protected final ImageView secondPlayerSymbolImageView;
     protected final GridPane gridPane4;
     protected final ColumnConstraints columnConstraints7;
@@ -101,10 +88,15 @@ public  class OnlineViewController extends BorderPane {
     protected final Text playerTwoNameScoreTextView;
     protected final Text playerTwoScoreTextView;
 
-      OnlineViewModel onlineViewModel ;
-    public OnlineViewController(OnlineViewModel onlineViewModel) {
-        this.onlineViewModel = onlineViewModel;
+    
+    private ImageView imageViews[][] = new ImageView[3][3];
+    SinglePlayerViewModel viewModel;
+    
+    
+    public SinglePlayerController(SinglePlayerViewModel viewModel) {
 
+        this.viewModel = viewModel;
+        
         gridPane = new GridPane();
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
@@ -126,14 +118,14 @@ public  class OnlineViewController extends BorderPane {
         rowConstraints3 = new RowConstraints();
         rowConstraints4 = new RowConstraints();
         rowConstraints5 = new RowConstraints();
-        firstPlayerName1 = new Text();
+        playerOneName = new Text();
         firstPlayerSymbolImageView1 = new ImageView();
         gridPane3 = new GridPane();
         columnConstraints6 = new ColumnConstraints();
         rowConstraints6 = new RowConstraints();
         rowConstraints7 = new RowConstraints();
         rowConstraints8 = new RowConstraints();
-        firstPlayerName = new Text();
+        playerTwoName = new Text();
         secondPlayerSymbolImageView = new ImageView();
         gridPane4 = new GridPane();
         columnConstraints7 = new ColumnConstraints();
@@ -215,7 +207,7 @@ public  class OnlineViewController extends BorderPane {
         GridPane.setHalignment(titleTextView, javafx.geometry.HPos.CENTER);
         titleTextView.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         titleTextView.setStrokeWidth(0.0);
-        titleTextView.setText("Multi Player");
+        titleTextView.setText("Single Player");
         titleTextView.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         titleTextView.setTextOrigin(javafx.geometry.VPos.CENTER);
         titleTextView.setFont(new Font(32.0));
@@ -230,7 +222,7 @@ public  class OnlineViewController extends BorderPane {
         backImageView.setPickOnBounds(true);
         backImageView.setPreserveRatio(true);
         GridPane.setMargin(backImageView, new Insets(0.0, 0.0, 0.0, 20.0));
-        backImageView.setImage(new Image(ImagesUri.back));
+   
 
         GridPane.setRowIndex(gridPane1, 1);
         gridPane1.setPrefHeight(101.0);
@@ -268,11 +260,11 @@ public  class OnlineViewController extends BorderPane {
         rowConstraints5.setPrefHeight(65.6);
         rowConstraints5.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        GridPane.setHalignment(firstPlayerName1, javafx.geometry.HPos.CENTER);
-        firstPlayerName1.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
-        firstPlayerName1.setStrokeWidth(0.0);
-        firstPlayerName1.setText("player 1");
-      
+        GridPane.setHalignment(playerOneName, javafx.geometry.HPos.CENTER);
+        playerOneName.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
+        playerOneName.setStrokeWidth(0.0);
+        playerOneName.setText("player 1");
+        playerOneName.setFont(new Font(18.0));
 
         GridPane.setHalignment(firstPlayerSymbolImageView1, javafx.geometry.HPos.CENTER);
         GridPane.setRowIndex(firstPlayerSymbolImageView1, 2);
@@ -281,7 +273,7 @@ public  class OnlineViewController extends BorderPane {
         firstPlayerSymbolImageView1.setFitWidth(30.0);
         firstPlayerSymbolImageView1.setPickOnBounds(true);
         firstPlayerSymbolImageView1.setPreserveRatio(true);
-        firstPlayerSymbolImageView1.setImage(new Image(ImagesUri.x));
+ 
 
         GridPane.setColumnIndex(gridPane3, 1);
         gridPane3.setStyle("-fx-background-color: #ffffff;");
@@ -304,11 +296,11 @@ public  class OnlineViewController extends BorderPane {
         rowConstraints8.setPrefHeight(64.79999999999998);
         rowConstraints8.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        GridPane.setHalignment(firstPlayerName, javafx.geometry.HPos.CENTER);
-        firstPlayerName.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
-        firstPlayerName.setStrokeWidth(0.0);
-        firstPlayerName.setText("player 2");
-        firstPlayerName.setFont(new Font(18.0));
+        GridPane.setHalignment(playerTwoName, javafx.geometry.HPos.CENTER);
+        playerTwoName.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
+        playerTwoName.setStrokeWidth(0.0);
+        playerTwoName.setText("player 2");
+        playerTwoName.setFont(new Font(18.0));
 
         GridPane.setHalignment(secondPlayerSymbolImageView, javafx.geometry.HPos.CENTER);
         GridPane.setRowIndex(secondPlayerSymbolImageView, 2);
@@ -316,7 +308,7 @@ public  class OnlineViewController extends BorderPane {
         secondPlayerSymbolImageView.setFitWidth(30.0);
         secondPlayerSymbolImageView.setPickOnBounds(true);
         secondPlayerSymbolImageView.setPreserveRatio(true);
-        secondPlayerSymbolImageView.setImage(new Image(ImagesUri.o));
+     
         setTop(gridPane);
 
         BorderPane.setAlignment(gridPane4, javafx.geometry.Pos.CENTER);
@@ -370,7 +362,7 @@ public  class OnlineViewController extends BorderPane {
         secondPlaceImageView.setFitWidth(100.0);
         secondPlaceImageView.setPickOnBounds(true);
         secondPlaceImageView.setPreserveRatio(true);
-        secondPlaceImageView.setImage(new Image(ImagesUri.oWithBackground));
+
 
         GridPane.setColumnIndex(firstPlaceImageView, 1);
         GridPane.setHalignment(firstPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -379,7 +371,7 @@ public  class OnlineViewController extends BorderPane {
         firstPlaceImageView.setFitWidth(100.0);
         firstPlaceImageView.setPickOnBounds(true);
         firstPlaceImageView.setPreserveRatio(true);
-        firstPlaceImageView.setImage(new Image(ImagesUri.oWithBackground));
+     
 
         GridPane.setColumnIndex(fourthPlaceImageView, 1);
         GridPane.setHalignment(fourthPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -389,7 +381,7 @@ public  class OnlineViewController extends BorderPane {
         fourthPlaceImageView.setFitWidth(100.0);
         fourthPlaceImageView.setPickOnBounds(true);
         fourthPlaceImageView.setPreserveRatio(true);
-        fourthPlaceImageView.setImage(new Image(ImagesUri.oWithBackground));
+
 
         GridPane.setColumnIndex(fifthPlaceImageView, 2);
         GridPane.setHalignment(fifthPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -399,7 +391,7 @@ public  class OnlineViewController extends BorderPane {
         fifthPlaceImageView.setFitWidth(100.0);
         fifthPlaceImageView.setPickOnBounds(true);
         fifthPlaceImageView.setPreserveRatio(true);
-        fifthPlaceImageView.setImage(new Image(ImagesUri.xWithBackground));
+     
 
         GridPane.setColumnIndex(sevenPlaceImageView, 1);
         GridPane.setHalignment(sevenPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -409,7 +401,7 @@ public  class OnlineViewController extends BorderPane {
         sevenPlaceImageView.setFitWidth(100.0);
         sevenPlaceImageView.setPickOnBounds(true);
         sevenPlaceImageView.setPreserveRatio(true);
-        sevenPlaceImageView.setImage(new Image(ImagesUri.emptyEnabled));
+  
 
         GridPane.setColumnIndex(eightPlaceImageView, 2);
         GridPane.setHalignment(eightPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -419,7 +411,7 @@ public  class OnlineViewController extends BorderPane {
         eightPlaceImageView.setFitWidth(100.0);
         eightPlaceImageView.setPickOnBounds(true);
         eightPlaceImageView.setPreserveRatio(true);
-        eightPlaceImageView.setImage(new Image(ImagesUri.emptyEnabled));
+
 
         GridPane.setColumnIndex(thirdPlaceImageView, 3);
         GridPane.setHalignment(thirdPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -428,7 +420,7 @@ public  class OnlineViewController extends BorderPane {
         thirdPlaceImageView.setFitWidth(100.0);
         thirdPlaceImageView.setPickOnBounds(true);
         thirdPlaceImageView.setPreserveRatio(true);
-        thirdPlaceImageView.setImage(new Image(ImagesUri.emptyDisabled));
+      
 
         GridPane.setColumnIndex(sixthPlaceImageView, 3);
         GridPane.setHalignment(sixthPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -438,7 +430,7 @@ public  class OnlineViewController extends BorderPane {
         sixthPlaceImageView.setFitWidth(100.0);
         sixthPlaceImageView.setPickOnBounds(true);
         sixthPlaceImageView.setPreserveRatio(true);
-        sixthPlaceImageView.setImage(new Image(ImagesUri.emptyEnabled));
+       
 
         GridPane.setColumnIndex(ninethPlaceImageView, 3);
         GridPane.setHalignment(ninethPlaceImageView, javafx.geometry.HPos.CENTER);
@@ -448,7 +440,7 @@ public  class OnlineViewController extends BorderPane {
         ninethPlaceImageView.setFitWidth(100.0);
         ninethPlaceImageView.setPickOnBounds(true);
         ninethPlaceImageView.setPreserveRatio(true);
-        ninethPlaceImageView.setImage(new Image(ImagesUri.xWithBackground));
+    
 
         GridPane.setColumnIndex(text, 4);
         GridPane.setHalignment(text, javafx.geometry.HPos.CENTER);
@@ -504,7 +496,6 @@ public  class OnlineViewController extends BorderPane {
         GridPane.setValignment(playerOneScoreTextView, javafx.geometry.VPos.TOP);
         playerOneScoreTextView.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         playerOneScoreTextView.setStrokeWidth(0.0);
-        playerOneScoreTextView.setText("2");
         playerOneScoreTextView.setFont(new Font(16.0));
 
         GridPane.setRowIndex(separator, 2);
@@ -525,7 +516,6 @@ public  class OnlineViewController extends BorderPane {
         GridPane.setValignment(playerTwoScoreTextView, javafx.geometry.VPos.BOTTOM);
         playerTwoScoreTextView.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         playerTwoScoreTextView.setStrokeWidth(0.0);
-        playerTwoScoreTextView.setText("0");
         playerTwoScoreTextView.setFont(new Font(16.0));
         setCenter(gridPane4);
 
@@ -546,14 +536,14 @@ public  class OnlineViewController extends BorderPane {
         gridPane2.getRowConstraints().add(rowConstraints3);
         gridPane2.getRowConstraints().add(rowConstraints4);
         gridPane2.getRowConstraints().add(rowConstraints5);
-        gridPane2.getChildren().add(firstPlayerName1);
+        gridPane2.getChildren().add(playerOneName);
         gridPane2.getChildren().add(firstPlayerSymbolImageView1);
         gridPane1.getChildren().add(gridPane2);
         gridPane3.getColumnConstraints().add(columnConstraints6);
         gridPane3.getRowConstraints().add(rowConstraints6);
         gridPane3.getRowConstraints().add(rowConstraints7);
         gridPane3.getRowConstraints().add(rowConstraints8);
-        gridPane3.getChildren().add(firstPlayerName);
+        gridPane3.getChildren().add(playerTwoName);
         gridPane3.getChildren().add(secondPlayerSymbolImageView);
         gridPane1.getChildren().add(gridPane3);
         gridPane.getChildren().add(gridPane1);
@@ -589,42 +579,239 @@ public  class OnlineViewController extends BorderPane {
         gridPane5.getChildren().add(playerTwoScoreTextView);
         gridPane4.getChildren().add(gridPane5);
         
-        titleTextView.setFont(Typography.headerBoldFont);
-        playerOneNameScoreTextView.setFont(Typography.subtitleTwoRegularFont);
-          firstPlayerName1.setFont(Typography.subtitleOneRegularFont);
-          firstPlayerName.setFont(Typography.subtitleOneRegularFont);
-          playerOneNameScoreTextView.setFont(Typography.subtitleOneRegularFont);
-          playerTwoNameScoreTextView.setFont(Typography.subtitleOneRegularFont);
-          
-          playerOneScoreTextView.setFont(Typography.BodyOneRegularFont);
-          playerTwoScoreTextView.setFont(Typography.BodyOneRegularFont);
-          
-          
-        backImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            try {
-               Stage stage =  Navigation.openPage(ViewController.WINNERDIALOGCNTROLLER,null);
-               PassData.getInstance()
-                    .menuDialogReturn.addListener(new ChangeListener<Boolean>() {
-                @Override
-                public void changed(ObservableValue<? extends Boolean> observable
-                        , Boolean oldValue, Boolean newValue) {  
-                    if(newValue != null){
-                      ((Stage) stage.getScene().getWindow()).close();
+        
+             imageViews[0][0] = firstPlaceImageView;
+            imageViews[0][1] = secondPlaceImageView;
+            imageViews[0][2] = thirdPlaceImageView;
+            imageViews[1][0] = fourthPlaceImageView;
+            imageViews[1][1] = fifthPlaceImageView;
+            imageViews[1][2] = sixthPlaceImageView;
+            imageViews[2][0]= sevenPlaceImageView;
+            imageViews[2][1] = eightPlaceImageView;
+            imageViews[2][2] = ninethPlaceImageView;
+            
+            
+             resetBoard();
+             boardSetters();
+             properitiesObservers();
+             init();
 
-                    }
-                }
-       
-
+    }
+    
+    
+    
+    
+        private void init()
+    {
+    
+     
+          viewModel.setPlayerOneSymbol(1);
+          viewModel.setPlayerTwoSymbol(2);
+          playerOneScoreTextView.setText("0");
+          playerTwoScoreTextView.setText("0");
+          viewModel.setPlayerOneSymbol(1);
+           viewModel.setPlayerOneName("ahmed");
+          viewModel.setPlayerTwoName("Computer");
+    
+    }
+    
+    
+    private void boardSetters()
+    {
+        
+          backImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+              try {
+                  Navigation.openPage(ViewController.MAINVIEWCONTROLLER, this);
+              } catch (IOException ex) {
+                  Logger.getLogger(OnlineViewController.class.getName()).log(Level.SEVERE, null, ex);
+              }
+             
     }); 
-            } catch (IOException ex) {
-                Logger.getLogger(OnlineViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-     });
-        
-        
+    
+       firstPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(0,0);
+    }); 
+    
+    
+       secondPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(0,1);
+    }); 
+       
+          thirdPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(0,2);
+    }); 
+          
+          
+             fourthPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(1,0);
+    }); 
+             
+                fifthPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(1,1);
+    }); 
+                
+                   sixthPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(1,2);
+    }); 
+                   
+                      sevenPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(2,0);
+    }); 
+                      
+                         eightPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(2,1);
+    }); 
+                         
+             ninethPlaceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {    
+             viewModel.setBoard(2,2);
+    }); 
+             
+             
+    
+    }
+    
+    
+    private void properitiesObservers()
+    {
+    
+    
+       viewModel.boardNotifier.addListener(new ChangeListener<Number>() {
+           @Override
+           public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+               int [][] board = viewModel.getBoard();
+               System.out.println(board[0][1]);
+               for(int row = 0 ; row < 3 ; row++){
+                   for(int column = 0 ; column < 3 ; column++)
+                   {
+                       ImageView imageView = imageViews[row][column];
+                       if(board[row][column] == 1){
+                           imageView.setImage(new Image(ImagesUri.xWithBackground));
+                       }else if (board[row][column] == 2){
+                           imageView.setImage(new Image(ImagesUri.oWithBackground));
+                       }
+                   }
+               }
+           }
+       });
+       
+       
+      viewModel.getWinnerName().addListener(new ChangeListener<String>() {
+           @Override
+           public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               System.out.println(newValue);
+               if(!newValue.isEmpty())PassData.getInstance().winnerName.set(newValue);
+               try {
+                   if(!newValue.isEmpty()) Navigation.openPage(ViewController.WINNERDIALOGCNTROLLER, null);
+               } catch (IOException ex) {
+                   Logger.getLogger(OnlineViewController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }
+       });
+      
+      
+       PassData.dialogReturn.addListener(new ChangeListener<String>() {
+           @Override
+           public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               try {
+                   switch (newValue) {
+                       case "main":
+                           {
+                               Navigation.openPage(ViewController.MAINVIEWCONTROLLER, SinglePlayerController.this);
+                               break;
+                           }
+                       case "replay":{
+                           
+                           resetBoard();
+                           viewModel.swapNames();
+                           break;
+                       }   case "watch moves":
+                       {
+                           
+                           break;
+                       }   }
+               }catch (IOException ex) {
+                   Logger.getLogger(OnlineViewController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }          
+       });
+       
+     viewModel.getPlayerOneName().addListener(new ChangeListener<String>() {
+           @Override
+           public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               playerOneName.setText(newValue);
+               playerOneNameScoreTextView.setText(newValue);
+           }
+       });
+     
+      viewModel.getPlayerTwoName().addListener(new ChangeListener<String>() {
+           @Override
+           public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               playerTwoName.setText(newValue);
+               playerTwoNameScoreTextView.setText(newValue);
+           }
+       });
+      
+      
+         viewModel.getPlayerOneSymbol().addListener(new ChangeListener<Number>() {
+           @Override
+           public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+               if(newValue.intValue() == 1)
+               {
+                   firstPlayerSymbolImageView1.setImage(new Image(ImagesUri.x));
+               }else{
+                   firstPlayerSymbolImageView1.setImage(new Image(ImagesUri.o));
+               }
+           }
+       });
          
-        
          
+          viewModel.getPlayerTwoSymbol().addListener(new ChangeListener<Number>() {
+           @Override
+           public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+               if(newValue.intValue() == 1)
+               {
+                   secondPlayerSymbolImageView.setImage(new Image(ImagesUri.x));
+               }else{
+                   secondPlayerSymbolImageView.setImage(new Image(ImagesUri.o));
+               }
+           }
+       });
+         
+         
+           viewModel.getPlayerOneScore().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
         
+            playerOneScoreTextView.setText(newValue.toString());
+            
+       });
+           
+           
+             viewModel.getPlayerTwoScore().addListener(new ChangeListener<Number>() {
+           @Override
+           public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+               playerTwoScoreTextView.setText(newValue.toString());
+           }
+       });
+      
+      
+      
+      
+      
+    
+    
+    }
+    
+    
+    private void resetBoard()
+    {
+               for(int row = 0 ; row < 3 ; row++){
+               for(int column = 0 ; column < 3 ; column++)
+               {
+                   ImageView imageView = imageViews[row][column];
+                       imageView.setImage(new Image(ImagesUri.emptyEnabled));
+               }
+           }
+               
+               viewModel.resetBorad();
+    
     }
 }

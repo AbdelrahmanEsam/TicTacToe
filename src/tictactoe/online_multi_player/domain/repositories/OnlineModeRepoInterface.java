@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tictactoe.online_mode.domain.repositories;
+package tictactoe.online_multi_player.domain.repositories;
 
 /**
  *

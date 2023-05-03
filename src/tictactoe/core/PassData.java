@@ -6,12 +6,13 @@
 package tictactoe.core;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class PassData {
     
     private static PassData instance  = null;
-    public static SimpleBooleanProperty menuDialogReturn = new SimpleBooleanProperty();
-    
+     public static SimpleStringProperty winnerName = new SimpleStringProperty();
+    public static SimpleStringProperty dialogReturn = new SimpleStringProperty();
     private PassData()
     {
     
@@ -24,7 +25,7 @@ public class PassData {
      if(instance == null){
         instance = new PassData();
         }
-     menuDialogReturn.setValue(null);
+     
     
     
     return instance;

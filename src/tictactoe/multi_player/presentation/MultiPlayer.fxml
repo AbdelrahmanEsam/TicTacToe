@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #FFB048;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <GridPane prefHeight="190.0" prefWidth="599.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="titleTextView" strokeType="OUTSIDE" strokeWidth="0.0" text="Multi Player" textAlignment="CENTER" textOrigin="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <effect>
+                        <Blend opacity="0.0" />
+                     </effect>
+                  </Text>
+                  <ImageView fx:id="backImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                     <image>
+                        <Image url="@../../core/designsystem/resources/images/back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="101.0" prefWidth="599.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane style="-fx-background-color: #ffffff;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="47.1999855041504" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="65.6" minHeight="10.0" prefHeight="65.6" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Text fx:id="playerOneName" strokeType="OUTSIDE" strokeWidth="0.0" text="player 1" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="firstPlayerSymbolImageView1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../../core/designsystem/resources/images/o.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+                  <GridPane style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="27.600008392333983" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="64.79999999999998" minHeight="10.0" prefHeight="64.79999999999998" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text fx:id="playerTwoName" strokeType="OUTSIDE" strokeWidth="0.0" text="player 2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
+                        <ImageView fx:id="secondPlayerSymbolImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../core/designsystem/resources/images/x.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </top>
+   <center>
+      <GridPane minWidth="-Infinity" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="164.99998321533204" minHeight="10.0" prefHeight="123.99998626708984" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="217.4" minHeight="10.0" prefHeight="118.99998779296874" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="217.59999999999997" minHeight="10.0" prefHeight="111.20002441406251" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="103.60001220703123" minHeight="0.0" prefHeight="77.5999755859375" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="secondPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/o_with_background.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="firstPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/x_with_background.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourthPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/o_with_background.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fifthPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/x_with_background.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sevenPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/empty_enabled.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eightPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/empty_enabled.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirdPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/x_with_background.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sixthPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/empty_disabled.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ninethPlaceImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../core/designsystem/resources/images/empty_enabled.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Text>
+            <GridPane style="-fx-background-color: #ffffff;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="41.19998779296875" minHeight="10.0" prefHeight="26.19998779296875" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="67.20001831054688" minHeight="10.0" prefHeight="36.60001220703125" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="71.40001220703125" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="58.79999389648438" minHeight="5.4000183105468835" prefHeight="34.99999999999999" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="58.79999389648438" minHeight="10.0" prefHeight="23.000012207031247" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="playerOneNameScoreTextView" strokeType="OUTSIDE" strokeWidth="0.0" text="player 1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="playerOneScoreTextView" strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Separator style="-fx-background-color: #ADADAD;" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </Separator>
+                  <Text fx:id="playerTwoNameScoreTextView" strokeType="OUTSIDE" strokeWidth="0.0" text="player 2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="playerTwoScoreTextView" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

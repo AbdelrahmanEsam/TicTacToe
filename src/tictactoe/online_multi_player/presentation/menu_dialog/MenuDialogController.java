@@ -1,4 +1,4 @@
-package tictactoe.online_mode.presentation.menu_dialog;
+package tictactoe.online_multi_player.presentation.menu_dialog;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
@@ -109,6 +109,8 @@ public  class MenuDialogController extends DialogPane {
          
            iconImageView.setImage(new Image(ImagesUri.home));
             restartImageView.setImage(new Image(ImagesUri.retry));
+            
+            
          
             menuButton.setOnAction((event) -> {
            
